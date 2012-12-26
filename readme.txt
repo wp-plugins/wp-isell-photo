@@ -3,8 +3,8 @@ Contributors: wpecommerce
 Donate link: http://wp-ecommerce.net/
 Tags: sell photos wordpress, sell photos, photos, wordpress photo selling, sell photo wordpress, wordpress gallery, photo gallery, photography, sell images, sell digital print
 Requires at least: 3.0
-Tested up to: 3.4.2
-Stable tag: 1.0.0
+Tested up to: 3.5
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,9 @@ Yes.
 For screenshots please visit the [WordPress Sell Photo](http://wp-ecommerce.net/wp-isell-photo-easily-sell-photos-wordpress-1800) plugin page
 
 == Changelog ==
+
+= 1.0.1 =
+* Plugin is now compatible with the gallery options of WordPress 3.5
 
 = 1.0.0 =
 * First commit

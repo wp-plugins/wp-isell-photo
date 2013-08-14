@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP iSell Photo
-Version: 1.0.1
+Version: 1.0.2
 Plugin URI: http://wp-ecommerce.net/?p=1800
 Author: wpecommerce
 Author URI: http://wp-ecommerce.net/
@@ -13,7 +13,7 @@ if(!class_exists('WP_iSELL_PHOTO'))
 {
 	class WP_iSELL_PHOTO 
 	{
-		var $plugin_version = '1.0.1';
+		var $plugin_version = '1.0.2';
 		function __construct() 
 		{
 			define('WP_iSELL_PHOTO_VERSION', $this->plugin_version);
@@ -144,7 +144,7 @@ function wp_iSell_photo_gallery_shortcode($output,$attr)
     extract(shortcode_atts(array(
         'order'      => 'ASC',
         'orderby'    => 'menu_order ID',
-        'id'         => $post->ID,
+        'id'         => $post ? $post->ID : 0,
         'itemtag'    => 'dl',
         'icontag'    => 'dt',
         'captiontag' => 'dd',
@@ -154,7 +154,7 @@ function wp_iSell_photo_gallery_shortcode($output,$attr)
         'exclude'    => '',
         'amount'	 => '',  // plugin specific parameter
         'button'	 => ''   // plugin specific parameter
-    ), $attr));
+    ), $attr, 'gallery'));
     /* plugin specific check */
     $error_msg = "";
     $paypal_email = get_option('wp_iSell_photo_paypal_email_address');
@@ -219,6 +219,15 @@ function wp_iSell_photo_gallery_shortcode($output,$attr)
 
     $itemtag = tag_escape($itemtag);
     $captiontag = tag_escape($captiontag);
+    $icontag = tag_escape($icontag);
+    $valid_tags = wp_kses_allowed_html( 'post' );
+    if ( ! isset( $valid_tags[ $itemtag ] ) )
+        $itemtag = 'dl';
+    if ( ! isset( $valid_tags[ $captiontag ] ) )
+        $captiontag = 'dd';
+    if ( ! isset( $valid_tags[ $icontag ] ) )
+        $icontag = 'dt';
+
     $columns = intval($columns);
     $itemwidth = $columns > 0 ? floor(100/$columns) : 100;
     $float = is_rtl() ? 'right' : 'left';
@@ -244,29 +253,31 @@ function wp_iSell_photo_gallery_shortcode($output,$attr)
 			#{$selector} .gallery-caption {
 				margin-left: 0;
 			}
-		</style>
-		<!-- see gallery_shortcode() in wp-includes/media.php -->";
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>";
     $size_class = sanitize_html_class( $size );
     $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
     $output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
 
     $i = 0;
     foreach ( $attachments as $id => $attachment ) {
-        $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
-        /* plugin specific code */
-        $url = wp_get_attachment_url($attachment->ID);
-		$item_name = $attachment->post_title;
-		$amount = number_format($amount, 2, '.', '');
-		//$item_description = '<div class="wpiSellPhoto_item_description">Item: '.$item_name.'</div>';
-		$item_price = '<div class="wpiSellPhoto_item_price">Price: '.$currency_symbol.$amount.'</div>';
-		$button_code = wp_iSell_photo_get_button_code_for_paypal($paypal_email,$currency,$return_url,$item_name,$amount,$button);
-        /* end */
+        if ( ! empty( $attr['link'] ) && 'file' === $attr['link'] )
+            $image_output = wp_get_attachment_link( $id, $size, false, false );
+        elseif ( ! empty( $attr['link'] ) && 'none' === $attr['link'] )
+            $image_output = wp_get_attachment_image( $id, $size, false );
+        else
+            $image_output = wp_get_attachment_link( $id, $size, true, false );
+
+        $image_meta  = wp_get_attachment_metadata( $id );
+
+        $orientation = '';
+        if ( isset( $image_meta['height'], $image_meta['width'] ) )
+            $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+
         $output .= "<{$itemtag} class='gallery-item'>";
         $output .= "
-			<{$icontag} class='gallery-icon'>
-				$link
-				$item_price
-				$button_code
+			<{$icontag} class='gallery-icon {$orientation}'>
+				$image_output
 			</{$icontag}>";
         if ( $captiontag && trim($attachment->post_excerpt) ) {
             $output .= "
@@ -274,6 +285,18 @@ function wp_iSell_photo_gallery_shortcode($output,$attr)
 				" . wptexturize($attachment->post_excerpt) . "
 				</{$captiontag}>";
         }
+         /* plugin specific code */
+        $url = wp_get_attachment_url($attachment->ID);
+        $item_name = $attachment->post_title;
+        $amount = number_format($amount, 2, '.', '');
+        //$item_description = '<div class="wpiSellPhoto_item_description">Item: '.$item_name.'</div>';
+        $item_price = '<div class="wpiSellPhoto_item_price">Price: '.$currency_symbol.$amount.'</div>';
+        $button_code = wp_iSell_photo_get_button_code_for_paypal($paypal_email,$currency,$return_url,$item_name,$amount,$button);
+        $output .= "
+        $item_price
+	    $button_code
+	    ";
+        /* end */
         $output .= "</{$itemtag}>";
         if ( $columns > 0 && ++$i % $columns == 0 )
             $output .= '<br style="clear: both" />';

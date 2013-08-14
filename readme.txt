@@ -1,10 +1,10 @@
 === WP iSell Photo ===
 Contributors: wpecommerce
 Donate link: http://wp-ecommerce.net/
-Tags: sell photos wordpress, sell photos, photos, wordpress photo selling, sell photo wordpress, wordpress gallery, photo gallery, photography, sell images, sell digital print
-Requires at least: 3.0
-Tested up to: 3.5
-Stable tag: 1.0.1
+Tags: sell photos, photo gallery, photography, sell images, sell digital print, commerce, e-commerce, paypal, sell media, stock photos, gallery, image, images, media, photo, photo albums, photos, picture, pictures, thumbnails
+Requires at least: 3.6
+Tested up to: 3.6
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,16 +31,17 @@ Create a new post/page on your WordPress Dashboard. There is an option to upload
 
 There are some options that you can configure for the gallery you just created (under the "Gallery Settings" section).
 
-1. Link thumbnails to: a) Image file  b) Attachment Page - you can either link each thumbnail to its URL or the attachment page (the page/post you are currently editing)
-1. Order images by: a) Menu order  b) Title  c) Date/TIme  d) Random
-1. Order: a) Ascending   b) Descending
-1. Gallery columns: 1 - 9 ( Number of thumbnails in each row)
+1. Link thumbnails to: a) Attachment Page (the page/post you are currently editing) b) Media File c) None
+1. Columns: 1 - 9 ( Number of thumbnails in each row)
+1. Thumbnail Order: a) Random b) Reverse c) Custom (Drag and drop to reorder images)
 
 Finally hit the "Insert Gallery" button and the gallery will be automatically inserted to your current post/page.
 
-If you want to edit the gallery at any time you can always select the gallery (It looks like a rectangular image in the visual editor) and click on the "Edit" option. Alternatively you can also customize the shortcode for the gallery. You need to switch to the "HTML" editor to do it. You will see a shortcode like the following:
+If you want to edit the gallery at any time you can always select the gallery (It looks like a rectangular image in the visual editor) and click on the "Edit" option. Alternatively you can also customize the shortcode for the gallery. You need to switch to the "Text" editor to do it. You will see a shortcode similar to the following:
 
-`[gallery]`
+`[gallery ids="126,125,124,123,122"]`
+
+Here ids parameter represents all the images that are currently present in the gallery.
 
 For more information on how to customize the WordPress gallery shortcode please refer to the [WordPress Documentation](http://codex.wordpress.org/Gallery_Shortcode)
 
@@ -57,17 +58,17 @@ There are some options that you need to configure in the General Settings of the
 
 Go to the post/page where you already have an existing gallery embedded. Add an additional `amount` parameter to the gallery shortcode and specify the price in it. For example:
 
-`[gallery amount="5.00"]`
+`[gallery amount="5.00" ids="126,125,124,123,122"]`
 
 now each image of the current gallery will have a "Buy Now" button with price 5.00
 
 You can also customize the look and feel of the "Buy Now" button. Simply include a `button` parameter in the gallery shortcode and specify the text you want to use for the button. For example:
 
-`[gallery amount="3.99" button="Buy it Now"]`
+`[gallery amount="3.99" button="Buy it Now" ids="126,125,124,123,122"]`
 
 If you want to use an image for the button you can do so by specifying the URL in the `button` parameter. For example:
 
-`[gallery amount="3.99" button="http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif"]`
+`[gallery amount="3.99" button="http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" ids="126,125,124,123,122"]`
 
 For detailed documentation please visit the [WordPress iSell Photo](http://wp-ecommerce.net/wp-isell-photo-easily-sell-photos-wordpress-1800) plugin page
 
@@ -93,7 +94,14 @@ Yes.
 
 For screenshots please visit the [WordPress Sell Photo](http://wp-ecommerce.net/wp-isell-photo-easily-sell-photos-wordpress-1800) plugin page
 
+== Upgrade Notice ==
+None
+
 == Changelog ==
+
+= 1.0.2 =
+* Plugin is now compatible with the gallery options of WordPress 3.6
+* Caption is supported for each gallery image
 
 = 1.0.1 =
 * Plugin is now compatible with the gallery options of WordPress 3.5

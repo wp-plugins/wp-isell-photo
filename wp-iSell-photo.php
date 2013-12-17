@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP iSell Photo
-Version: 1.0.3
+Version: 1.0.4
 Plugin URI: http://wp-ecommerce.net/?p=1800
 Author: wpecommerce
 Author URI: http://wp-ecommerce.net/
@@ -13,7 +13,7 @@ if(!class_exists('WP_iSELL_PHOTO'))
 {
 	class WP_iSELL_PHOTO 
 	{
-		var $plugin_version = '1.0.3';
+		var $plugin_version = '1.0.4';
 		function __construct() 
 		{
 			define('WP_iSELL_PHOTO_VERSION', $this->plugin_version);

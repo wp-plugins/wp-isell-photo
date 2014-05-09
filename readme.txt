@@ -2,9 +2,9 @@
 Contributors: wpecommerce
 Donate link: http://wp-ecommerce.net/
 Tags: sell photos, photo gallery, photography, sell images, sell digital print, commerce, e-commerce, paypal, sell media, stock photos, gallery, image, images, media, photo, photo albums, photos, picture, pictures, thumbnails
-Requires at least: 3.6
-Tested up to: 3.8
-Stable tag: 1.0.4
+Requires at least: 3.9
+Tested up to: 3.9
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,9 @@ For screenshots please visit the [WordPress Sell Photo](http://wp-ecommerce.net/
 None
 
 == Changelog ==
+
+= 1.0.5 =
+* Plugin now works with WordPress 3.9 gallery features
 
 = 1.0.4 =
 * Plugin now works with WordPress 3.8

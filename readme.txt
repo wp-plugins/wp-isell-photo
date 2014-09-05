@@ -1,7 +1,7 @@
 === WP iSell Photo ===
 Contributors: wpecommerce
 Donate link: https://wp-ecommerce.net/
-Tags: sell photos, photo gallery, photography, sell images, sell digital print, commerce, e-commerce, paypal, sell media, stock photos, gallery, image, images, media, photo, photo albums, photos, picture, pictures, thumbnails
+Tags: sell photos, photo gallery, photography, sell images, sell digital print, commerce, e-commerce, paypal, sell media, stock photos, gallery, image, images, media, photo, photo albums, photos, picture, pictures, thumbnails  
 Requires at least: 3.9
 Tested up to: 4.0
 Stable tag: 1.0.5

@@ -1,9 +1,9 @@
 === WP iSell Photo ===
 Contributors: wpecommerce
-Donate link: http://wp-ecommerce.net/
+Donate link: https://wp-ecommerce.net/
 Tags: sell photos, photo gallery, photography, sell images, sell digital print, commerce, e-commerce, paypal, sell media, stock photos, gallery, image, images, media, photo, photo albums, photos, picture, pictures, thumbnails
 Requires at least: 3.9
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -70,7 +70,7 @@ If you want to use an image for the button you can do so by specifying the URL i
 
 `[gallery amount="3.99" button="http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" ids="126,125,124,123,122"]`
 
-For detailed documentation please visit the [WordPress iSell Photo](http://wp-ecommerce.net/wp-isell-photo-easily-sell-photos-wordpress-1800) plugin page
+For detailed documentation please visit the [WordPress iSell Photo](https://wp-ecommerce.net/wp-isell-photo-easily-sell-photos-wordpress-1800) plugin page
 
 == Installation ==
 
@@ -92,7 +92,7 @@ Yes.
 
 == Screenshots ==
 
-For screenshots please visit the [WordPress Sell Photo](http://wp-ecommerce.net/wp-isell-photo-easily-sell-photos-wordpress-1800) plugin page
+For screenshots please visit the [WordPress Sell Photo](https://wp-ecommerce.net/wp-isell-photo-easily-sell-photos-wordpress-1800) plugin page
 
 == Upgrade Notice ==
 None

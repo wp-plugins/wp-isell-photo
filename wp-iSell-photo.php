@@ -2,9 +2,9 @@
 /*
 Plugin Name: WP iSell Photo
 Version: 1.0.5
-Plugin URI: http://wp-ecommerce.net/?p=1800
+Plugin URI: https://wp-ecommerce.net/wp-isell-photo-easily-sell-photos-wordpress-1800
 Author: wpecommerce
-Author URI: http://wp-ecommerce.net/
+Author URI: https://wp-ecommerce.net/
 Description: A simple plugin to sell photos from WordPress
 */
 
@@ -62,11 +62,36 @@ if(!class_exists('WP_iSELL_PHOTO'))
 
                 ?>
                 <div class="wrap">
+                <div class="update-nag">Please visit the <a target="_blank" href="https://wp-ecommerce.net/wp-isell-photo-easily-sell-photos-wordpress-1800">WP iSell Photo</a> documentation page for usage instructions.</div>
+                <?php  
+                echo screen_icon().'<h2>WP iSell Photo - v'.$this->plugin_version.'</h2>';
+                $plugin_tabs = array(
+                    'wp-iSell-photo-settings' => 'General Settings'
+                );
+                $current = "";
+                if(isset($_GET['page'])){
+                    $current = $_GET['page'];
+                    if(isset($_GET['action'])){
+                        $current .= "&action=".$_GET['action'];
+                    }
+                }
+                $content = '';
+                $content .= '<h2 class="nav-tab-wrapper">';
+                foreach($plugin_tabs as $location => $tabname)
+                {
+                    if($current == $location){
+                        $class = ' nav-tab-active';
+                    } else{
+                        $class = '';    
+                    }
+                    $content .= '<a class="nav-tab'.$class.'" href="?page='.$location.'">'.$tabname.'</a>';
+                }
+                $content .= '</h2>';
+                echo $content;
+                ?>
                 <div id="poststuff"><div id="post-body">
 
-                <h2>WP iSell Photo - v<?php echo $this->plugin_version;?></h2>
                 <div class="postbox">
-                <h3><label for="title">General Settings</label></h3>
                 <div class="inside">		
                 <form method="post" action="options.php">
                     <?php settings_fields('wp-iSell-photo-settings-group'); ?>

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP iSell Photo
-Version: 1.0.6
+Version: 1.0.7
 Plugin URI: https://wp-ecommerce.net/wp-isell-photo-easily-sell-photos-wordpress-1800
 Author: wpecommerce
 Author URI: https://wp-ecommerce.net/
@@ -13,7 +13,7 @@ if(!class_exists('WP_iSELL_PHOTO'))
 {
     class WP_iSELL_PHOTO 
     {
-        var $plugin_version = '1.0.6';
+        var $plugin_version = '1.0.7';
         function __construct() 
         {
                 define('WP_iSELL_PHOTO_VERSION', $this->plugin_version);

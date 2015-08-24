@@ -3,8 +3,8 @@ Contributors: wpecommerce
 Donate link: https://wp-ecommerce.net/
 Tags: sell photos, photo gallery, photography, sell images, sell digital print, commerce, e-commerce, paypal, sell media, stock photos, gallery, image, images, media, photo, photo albums, photos, picture, pictures, thumbnails  
 Requires at least: 4.1
-Tested up to: 4.2
-Stable tag: 1.0.6
+Tested up to: 4.3
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,9 @@ For screenshots please visit the [WordPress Sell Photo](https://wp-ecommerce.net
 None
 
 == Changelog ==
+
+= 1.0.7 =
+* WP iSell Photo is now compatible with WordPress 4.3
 
 = 1.0.6 =
 * Updated the gallery code so it is compatible with WordPress 4.1
